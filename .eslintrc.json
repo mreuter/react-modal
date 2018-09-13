@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "plugin:compat/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "plugins": ["prefer-object-spread", "flowtype", "compat", "import", "react", "jsx-a11y"],
+  "rules": {
+    "react/jsx-filename-extension": "off"
+  }
+}

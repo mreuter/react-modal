@@ -1,0 +1,16 @@
+src/
+config/
+node_modules/
+.vscode/
+/flow-typed
+/coverage
+babel.config.js
+.travis.yml
+.editorconfig
+.eslintignore
+.eslintrc.json
+.flowconfig
+.gitignore
+yarn.lock
+yarn-error.log
+jest.config.js

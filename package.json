@@ -1,0 +1,62 @@
+{
+  "name": "@mr-web/react-modal",
+  "version": "0.1.0",
+  "description": "Fully customizable Modals for React",
+  "main": "lib/index.js",
+  "author": "Marc Reuter <marc@twisted-pair.de>",
+  "license": "MIT",
+  "repository": "github:mreuter/react-modal",
+  "homepage": "https://github.com/mreuter/link-to-key#readme",
+  "keywords": [
+    "react",
+    "modal",
+    "customizable",
+    "popup"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn test:install",
+    "test:install": "rm -Rf tmp && mkdir tmp && cd tmp && npm init -y && TGZ=`cd .. && npm pack 2>&1 | tail -n 1` && yarn add --cache-folder ./cache ../$TGZ && cd .. && rm -Rf tmp $TGZ",
+    "prepack": "yarn qa && yarn build",
+    "precommit": "yarn qa",
+    "prepush": "yarn qa",
+    "qa": "yarn lint && yarn flow && yarn test",
+    "test": "jest",
+    "lint": "eslint ./src",
+    "build:clean": "rimraf ./lib",
+    "build:compile": "webpack --config config/webpack.config.js --display-modules",
+    "build": "yarn build:clean && yarn build:compile && cp src/index.js lib/index.js.flow",
+    "dev:compile": "webpack --config config/webpack.config.js --display-modules --env development --watch",
+    "dev": "yarn build:clean && yarn dev:compile"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.2",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-compat": "^2.5.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.80.0",
+    "flow-typed": "^2.5.1",
+    "husky": "^0.14.3",
+    "jest": "^23.5.0",
+    "react": "^16.3.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  }
+}

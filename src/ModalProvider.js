@@ -40,11 +40,15 @@ class ModalProvider extends React.PureComponent<ModalProviderProps, ModalProvide
 
   modalDidUnmount = (modal: React.Node) => {
     const { modals, state: { modal: currentModal } } = this;
-    if ((currentModal === modal) && modals.length > 0) {
-      this.setState({ modal: modals.pop() });
+    if (currentModal === modal) {
+      if (modals.length > 0) {
+        this.setState({ modal: modals.pop() });
+      } else {
+        this.setState({ modal: undefined });
+      }
+    } else {
+      this.modals = modals.filter((item: React.Node) => item !== modal);
     }
-    this.modals = modals.filter((item: React.Node) => item !== modal);
-    this.setState({ modal: undefined });
   };
 
   render() {
